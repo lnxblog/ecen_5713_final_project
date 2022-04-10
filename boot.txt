@@ -1,0 +1,5 @@
+fatload mmc 0:1 0x00080000 Image
+fatload mmc 0:1 ${ramdisk_addr_r} uRamdisk
+fatload mmc 0:1 0x2eff8200 bcm2710-rpi-3-b.dtb
+setenv bootargs "earlycon coherent_pool=1M 8250.nr_uarts=1 console=ttyS0,115200 rdinit=/bin/sh"
+booti ${kernel_addr_r} ${ramdisk_addr_r} 0x2eff8200
